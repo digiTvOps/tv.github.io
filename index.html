@@ -75,7 +75,7 @@
         <div class="loading-spinner"></div>
         <div class="main">
             <form>
-                <a href="app-digicel-release(1.2.1).apk" download>
+                <a href="app-digicel-release(1.2.2).apk" download="">
                     <input type="button" value="Download">
                 </a>
             </form>
@@ -87,6 +87,7 @@
 </div>
 
 <script>
+    // Calculate the remaining time
     function calculateTimeLeft() {
         var releaseDate = new Date("2024-05-30"); // Set the release date
         var currentDate = new Date();
@@ -105,11 +106,13 @@
         };
     }
 
+    // Update the countdown timer
     function updateCountdown() {
         var timeLeft = calculateTimeLeft();
         document.getElementById("countdown").innerHTML = timeLeft.days + "d " + timeLeft.hours + "h " + timeLeft.minutes + "m " + timeLeft.seconds + "s";
     }
 
+    // Update the countdown every second
     setInterval(updateCountdown, 1000);
 </script>
 
