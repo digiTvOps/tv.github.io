@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiTv</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body, h1 {
+            font-family: "Raleway", sans-serif;
+        }
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .bgimg {
+            background-image: url('img/pexels-sharad-kachhi-3937174.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent black overlay */
+        }
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .logo {
+            font-size: 48px;
+        }
+        .main {
+            margin-top: 20px;
+        }
+        .main input[type="button"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .main input[type="button"]:hover {
+            background-color: #45a049; /* Change background color on hover */
+        }
+        #countdown {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bgimg">
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="logo">DigiTv</div>
+        <h1>COMING SOON</h1>
+        <hr style="width: 40%">
+        <p id="countdown">Calculating countdown...</p>
+        <div class="loading-spinner"></div>
+        <div class="main">
+            <form>
+                <a href="app-digicel-release(1.2.1).apk" download="">
+                    <input type="button" value="Download">
+                </a>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        Powered by <a href="test.css" target="_blank">G-Labs</a>
+    </div>
+</div>
+
+<script>
+    function calculateTimeLeft() {
+        var releaseDate = new Date("2024-05-30"); // Set the release date
+        var currentDate = new Date();
+        var timeDifference = releaseDate.getTime() - currentDate.getTime();
+
+        var daysLeft = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        var hoursLeft = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutesLeft = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        var secondsLeft = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        return {
+            days: daysLeft,
+            hours: hoursLeft,
+            minutes: minutesLeft,
+            seconds: secondsLeft
+        };
+    }
+
+    function updateCountdown() {
+        var timeLeft = calculateTimeLeft();
+        document.getElementById("countdown").innerHTML = timeLeft.days + "d " + timeLeft.hours + "h " + timeLeft.minutes + "m " + timeLeft.seconds + "s";
+    }
+
+    setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
